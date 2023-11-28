@@ -21,7 +21,7 @@
         finalizada: true,
       }
         
-  ]
+    ]
   })
 
   const getTarefasPendentes = () => {
@@ -57,14 +57,9 @@
 
 <template>
   <div class="container">
-    <Cabecalho />
-    <Formulario /> 
-    <ListaDeTarefas />
+    <Cabecalho :tarefas-pendentes="getTarefasPendentes().length"/>
+    <Formulario :trocar-filtro="evento => estado.filtro = evento.target.value" :tarefa-tempo="estado.tarefaTempo" :editaTarefaTemp="evento => estado.tarefaTempo = evento.target.value" :cadastra-tarefa="cadastraTarefa"/>
+    <ListaDeTarefas :tarefas="getTarefasFiltradas()"/>
   </div>
 </template>
 
-<style scoped>
-  .done {
-    text-decoration: line-through;
-  }
-</style>
